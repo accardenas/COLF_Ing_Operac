@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Resultados Exportación — Colfrutas</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* gray-100 */
+        }
+        .chart-container {
+            position: relative;
+            height: 450px;
+            width: 100%;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center w-full">
+                <!-- Logo & Title Group -->
+                <div class="flex items-center mb-4 sm:mb-0">
+                    <!-- Logo -->
+                    <div class="mr-4 flex-shrink-0">
+                        <img src="Logo Colfrutas transparencia.png" alt="Logo Colfrutas" class="h-16" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback -->
+                        <div class="hidden bg-gray-200 h-16 w-32 rounded items-center justify-center text-gray-500 text-sm">Logo Colfrutas</div>
+                    </div>
+                    <!-- Title -->
+                    <div>
+                        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">Informe de Resultados Operativos</h1>
+                        <p class="text-md sm:text-lg text-emerald-600 font-semibold">Exportación Colfrutas</p>
+                    </div>
+                </div>
+                <!-- Date Group -->
+                <div class="text-center sm:text-right">
+                    <p class="text-md font-medium text-gray-600">Periodo Analizado:</p>
+                    <p class="text-lg font-semibold text-gray-800">Enero – Junio 2025</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Section 1: Consolidated Summary -->
+        <section id="resumen" class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center"><i data-feather="bar-chart-2" class="mr-3 text-emerald-600"></i>Resumen Consolidado de Ventas</h2>
+            <div class="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="border-b-2 border-gray-200">
+                        <tr>
+                            <th class="py-3 px-4 font-semibold text-gray-700">Producto</th>
+                            <th class="py-3 px-4 font-semibold text-gray-700 text-right">Total Ventas (Millones COP)</th>
+                            <th class="py-3 px-4 font-semibold text-gray-700 text-center hidden md:table-cell">CFH (1%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-emerald-50">
+                            <td class="py-4 px-4 font-medium">Caja plátano hartón 25 kg</td>
+                            <td class="py-4 px-4 text-right font-semibold text-emerald-700">$10,702</td>
+                            <td class="py-4 px-4 text-center hidden md:table-cell"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Aplicable</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-emerald-50">
+                            <td class="py-4 px-4 font-medium">Caja plátano burro 15 kg</td>
+                            <td class="py-4 px-4 text-right font-semibold text-emerald-700">$4,513</td>
+                            <td class="py-4 px-4 text-center hidden md:table-cell"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Aplicable</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-emerald-50">
+                            <td class="py-4 px-4 font-medium">Caja plátano burro 10 kg</td>
+                            <td class="py-4 px-4 text-right font-semibold text-emerald-700">$3,846</td>
+                            <td class="py-4 px-4 text-center hidden md:table-cell"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Aplicable</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-emerald-50">
+                            <td class="py-4 px-4 font-medium">Caja banano manzano 10 kg</td>
+                            <td class="py-4 px-4 text-right font-semibold text-emerald-700">$3,039</td>
+                            <td class="py-4 px-4 text-center hidden md:table-cell"><span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">No Aplicable</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-amber-50">
+                            <td class="py-4 px-4 font-medium">Caja plátano hartón 10 kg especial</td>
+                            <td class="py-4 px-4 text-right font-semibold text-amber-700">$122</td>
+                             <td class="py-4 px-4 text-center hidden md:table-cell"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Aplicable</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-amber-50">
+                            <td class="py-4 px-4 font-medium">Caja de ñame diamante 10 kg</td>
+                            <td class="py-4 px-4 text-right font-semibold text-amber-700">$57</td>
+                             <td class="py-4 px-4 text-center hidden md:table-cell"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Aplicable</span></td>
+                        </tr>
+                        <tr class="hover:bg-amber-50">
+                            <td class="py-4 px-4 font-medium">Caja de ñame diamante 15 kg</td>
+                            <td class="py-4 px-4 text-right font-semibold text-amber-700">$21</td>
+                             <td class="py-4 px-4 text-center hidden md:table-cell"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Aplicable</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <div class="mt-4 text-sm text-gray-500">
+                    <p>* CFH: Cuota de Fomento Hortofrutícola. Contribución parafiscal obligatoria para la mayoría de frutas y hortalizas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Monthly Behavior Chart -->
+        <section id="comportamiento" class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center"><i data-feather="trending-up" class="mr-3 text-emerald-600"></i>Comportamiento Mensual de Ventas</h2>
+             <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                <div class="chart-container">
+                    <canvas id="ventasChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-4">Haga clic en un producto en la leyenda para ocultarlo/mostrarlo en el gráfico.</p>
+             </div>
+        </section>
+
+        <!-- Section 3: Product Analysis -->
+        <section id="analisis" class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center"><i data-feather="pie-chart" class="mr-3 text-emerald-600"></i>Análisis por Producto</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card Producto 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="font-bold text-lg mb-2">✅ Caja Plátano Hartón 25 kg</h3>
+                    <p class="text-sm text-gray-600 mb-4">Producto con mayor volumen de ventas.</p>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>Total Ventas:</strong> $10,702 millones</p>
+                        <p><strong>Promedio Mensual:</strong> $1,784 millones</p>
+                        <p><strong>Mejor Mes:</strong> Mayo ($2,201 millones)</p>
+                        <p class="text-red-600 font-medium"><strong>Caída significativa en Junio</strong> ($1,336 millones)</p>
+                    </div>
+                </div>
+
+                <!-- Card Producto 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="font-bold text-lg mb-2">✅ Caja Plátano Burro 15 kg</h3>
+                    <p class="text-sm text-gray-600 mb-4">Segundo producto más vendido.</p>
+                     <div class="space-y-2 text-sm">
+                        <p><strong>Total Ventas:</strong> $4,513 millones</p>
+                        <p><strong>Promedio Mensual:</strong> $752 millones</p>
+                        <p><strong>Pico de Ventas:</strong> Mayo ($1,127 millones)</p>
+                        <p class="text-red-600 font-medium"><strong>Caída abrupta en Junio</strong></p>
+                    </div>
+                </div>
+                
+                <!-- Card Producto 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="font-bold text-lg mb-2">✅ Caja Plátano Burro 10 kg</h3>
+                    <p class="text-sm text-gray-600 mb-4">Tendencia creciente hasta Mayo.</p>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>Total Ventas:</strong> $3,846 millones</p>
+                        <p><strong>Promedio Mensual:</strong> $641 millones</p>
+                        <p><strong>Mes Máximo:</strong> Mayo</p>
+                        <p><strong>Tendencia:</strong> Creciente Enero-Mayo</p>
+                    </div>
+                </div>
+
+                <!-- Card Producto 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="font-bold text-lg mb-2">✅ Caja Banano Manzano 10 kg</h3>
+                    <p class="text-sm text-gray-600 mb-4">Excluido de CFH por Ley 118/1994.</p>
+                     <div class="space-y-2 text-sm">
+                        <p><strong>Total Ventas:</strong> $3,039 millones</p>
+                        <p><strong>Mejor Mes:</strong> Marzo</p>
+                        <p><strong>CFH:</strong> <span class="font-semibold text-blue-700">No aplicable</span></p>
+                    </div>
+                </div>
+
+                <!-- Card Producto 5 -->
+                 <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-amber-500 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="font-bold text-lg mb-2">⚠️ Caja Plátano Hartón 10 kg especial</h3>
+                    <p class="text-sm text-gray-600 mb-4">Ventas irregulares con potencial.</p>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>Total Ventas:</strong> $122 millones</p>
+                        <p><strong>Meses con Ventas:</strong> Febrero, Abril, Mayo</p>
+                         <p class="font-medium">Potencial de crecimiento si se regula su exportación.</p>
+                    </div>
+                </div>
+
+                <!-- Card Producto 6 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="font-bold text-lg mb-2">⚠️ Caja Ñame Diamante (10 y 15 kg)</h3>
+                    <p class="text-sm text-gray-600 mb-4">Sin actividad desde Enero.</p>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>Total Ventas:</strong> $78 millones (combinado)</p>
+                        <p><strong>Única Exportación:</strong> Enero</p>
+                        <p class="font-medium text-red-700">Parálisis indica problemas en oferta o demanda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Recommendations -->
+        <section id="recomendaciones">
+            <h2 class="text-2xl font-bold mb-6 flex items-center"><i data-feather="check-circle" class="mr-3 text-emerald-600"></i>Recomendaciones Gerenciales</h2>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <ul class="space-y-4 list-disc list-inside text-gray-700">
+                    <li><strong class="text-gray-900">Estabilizar Ventas de Junio:</strong> Concentrar esfuerzos en analizar y revertir la caída generalizada de ventas observada en este mes.</li>
+                    <li><strong class="text-gray-900">Priorizar Producto Estrella:</strong> El Plátano Hartón 25 kg es clave. Asegurar su abastecimiento y priorizar su comercialización internacional.</li>
+                    <li><strong class="text-gray-900">Reactivar Exportación de Ñame:</strong> Investigar la causa de la parálisis desde enero. Podría ser un problema en la cadena de suministro, calidad o demanda externa.</li>
+                    <li><strong class="text-gray-900">Monitorear Productos con Potencial:</strong> Productos como el Plátano Hartón 10 kg especial pueden ofrecer un mayor valor agregado y deben ser monitoreados.</li>
+                    <li><strong class="text-gray-900">Cumplimiento Fiscal (CFH):</strong>
+                        <ul class="pl-5 mt-2 space-y-1 list-['-_'] list-inside">
+                           <li>Aplicar la retención del 1% de CFH a todas las ventas de plátano y ñame.</li>
+                           <li>Continuar eximiendo al banano del CFH, con base en el respaldo legal de la Ley 118/1994.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-6 border-t">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center md:justify-start">
+            <!-- Logo -->
+            <div class="mb-4 md:mb-0 md:mr-6 flex-shrink-0">
+                <!-- El logo debe estar en la misma carpeta que este archivo HTML -->
+                <img src="simbolo Gescont transparencia.png" alt="Logo Gescont" class="h-16" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <!-- Fallback en caso de que el logo no cargue -->
+                <div class="hidden bg-gray-200 h-16 w-40 rounded items-center justify-center text-gray-500 text-sm">Logo no encontrado</div>
+            </div>
+
+            <!-- Contact and Copyright Info -->
+            <div class="text-center md:text-left text-gray-600 text-xs space-y-2">
+                <p class="font-semibold">Elaborado por: 👨🏽‍💻 CP. AUGUSTO CÁRDENAS OSSA | 📧 augustoccardenas@gmail.com | ☎️ 321 8168328</p>
+                <p class="text-gray-500">© 2025 GESCONT ¡Más que números! - Este es un informe generado con fines ilustrativos.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // --- DATA SETUP ---
+        // This data is derived and estimated from the executive summary to be illustrative.
+        const salesData = {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+            datasets: [
+                {
+                    label: 'Plátano Hartón 25 kg',
+                    data: [1800, 1750, 1900, 1715, 2201, 1336],
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)', // emerald-500
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                },
+                {
+                    label: 'Plátano Burro 15 kg',
+                    data: [650, 700, 836, 700, 1127, 500],
+                    backgroundColor: 'rgba(5, 150, 105, 0.2)', // emerald-600
+                    borderColor: 'rgba(5, 150, 105, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                },
+                {
+                    label: 'Plátano Burro 10 kg',
+                    data: [500, 550, 650, 720, 800, 626],
+                    backgroundColor: 'rgba(6, 95, 70, 0.2)', // emerald-800
+                    borderColor: 'rgba(6, 95, 70, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                },
+                {
+                    label: 'Banano Manzano 10 kg',
+                    data: [450, 500, 650, 539, 500, 400],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)', // blue-500
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                },
+                {
+                    label: 'Plátano Hartón 10 kg esp.',
+                    data: [0, 40, 0, 50, 32, 0],
+                    backgroundColor: 'rgba(245, 158, 11, 0.2)', // amber-500
+                    borderColor: 'rgba(245, 158, 11, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                },
+                {
+                    label: 'Ñame Diamante 10 kg',
+                    data: [57, 0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(239, 68, 68, 0.2)', // red-500
+                    borderColor: 'rgba(239, 68, 68, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                },
+                {
+                    label: 'Ñame Diamante 15 kg',
+                    data: [21, 0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(153, 27, 27, 0.2)', // red-800
+                    borderColor: 'rgba(153, 27, 27, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                }
+            ]
+        };
+
+        // --- CHART CONFIGURATION ---
+        const config = {
+            type: 'line',
+            data: salesData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                         labels: {
+                            usePointStyle: true,
+                            boxWidth: 8,
+                            padding: 20
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Ventas Mensuales (en millones de COP)',
+                        font: {
+                            size: 16
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: '#FFF',
+                        titleColor: '#333',
+                        bodyColor: '#666',
+                        borderColor: '#ddd',
+                        borderWidth: 1,
+                        padding: 10,
+                        callbacks: {
+                           label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(context.parsed.y * 1000000);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e5e7eb' // gray-200
+                        },
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return '$' + value.toLocaleString('es-CO');
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // --- RENDER CHART ---
+        window.onload = function() {
+            const ctx = document.getElementById('ventasChart').getContext('2d');
+            window.myChart = new Chart(ctx, config);
+        };
+        
+        // --- INITIALIZE ICONS ---
+        feather.replace();
+    </script>
+
+</body>
+</html>
